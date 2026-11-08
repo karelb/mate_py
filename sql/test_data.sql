@@ -1,0 +1,150 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.10.14
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jan 18, 2023 at 09:13 AM
+-- Server version: 5.5.68-MariaDB
+-- PHP Version: 5.5.38
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `demo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_data`
+--
+
+CREATE TABLE IF NOT EXISTS `test_data` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `ow_project` varchar(255) NOT NULL,
+  `work_set_id` int(11) NOT NULL,
+  `work_set_name` varchar(100) NOT NULL,
+  `nr_bh` int(11) DEFAULT NULL,
+  `create_date` date NOT NULL,
+  `create_user_id` varchar(25) NOT NULL,
+  `to_delete` int(11) NOT NULL DEFAULT '0',
+  `first_date` date NOT NULL,
+  `last_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test_data`
+--
+
+INSERT INTO `test_data` (`id`, `ow_project`, `work_set_id`, `work_set_name`, `nr_bh`, `create_date`, `create_user_id`, `to_delete`, `first_date`, `last_date`) VALUES
+(2302, 'EU_MEGA_MERGE_RD', 4, 'wcc_LWO_BVA', 9, '2021-11-25', 'S_DATM00', 0, '2021-11-25', '2021-11-25'),
+(2843, 'NL_ONSHORE_RD', 31767, 'wcc_test_tjeerd', 7, '2021-11-25', 'S_DATM00', 0, '2021-11-25', '2021-11-25'),
+(2842, 'NL_ONSHORE_RD', 31766, 'wcc_test_tj', 19, '2021-11-25', 'S_DATM00', 0, '2021-11-25', '2021-11-25'),
+(2844, 'NL_ONSHORE_RD', 31768, 'wcc_tjeeerd_test2', 151, '2021-11-25', 'S_DATM00', 0, '2021-11-25', '2021-11-25'),
+(2381, 'NL_OFFSHORE_TM5', 29766, 'Maasvlakte_Aramis_with_shearsonic', 23, '2021-11-24', 'S_DATM00', 0, '2021-11-25', '2021-11-25'),
+(2333, 'EU_MEGA_MERGE_UTM31N', 1424, 'wcc_ccs_delete', 1, '2021-11-18', 'S_DATM00', 0, '2021-11-25', '2021-11-25'),
+(2487, 'NL_OFFSHORE_TM5', 29754, 'wcc_m9n7_bm_DENS_full_strat', 69, '2021-11-17', 'S_DATM00', 0, '2021-11-25', '2021-11-25'),
+(1845, 'NL_ONSHORE_RD', 31765, 'wcc_Richard_test', 4, '2021-11-17', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1389, 'EU_MEGA_MERGE_UTM31N', 1423, 'wcc_cafe', 1183, '2021-11-16', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1496, 'NL_OFFSHORE_TM5', 29753, 'wcc_m9n7_ameland_basinmodel_v1', 1, '2021-11-15', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1383, 'EU_MEGA_MERGE_UTM31N', 1420, 'wcc_x-border', 68, '2021-11-10', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1377, 'EU_MEGA_MERGE_UTM31N', 1422, 'wcc_sdfd', 27, '2021-11-10', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1405, 'EU_MEGA_MERGE_UTM31N', 1421, 'wcc_xb', 140, '2021-11-10', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1576, 'NL_OFFSHORE_TM5', 29751, 'wcc_G07_to_N07_OliverButton', 31, '2021-11-09', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1520, 'NL_OFFSHORE_TM5', 29752, 'wcc_A05_to_F09_OliverButton', 4, '2021-11-09', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(2061, 'NL_ONSHORE_RD', 31764, 'wcc_Tjeerd_test', 46, '2021-11-09', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1371, 'EU_MEGA_MERGE_TM5', 20, 'wcc_dual', 350, '2021-10-28', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1494, 'NL_OFFSHORE_TM5', 29748, 'wcc_m9n7_qi_2021', 2, '2021-10-19', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1495, 'NL_OFFSHORE_TM5', 29750, 'wcc_m9n7_qi_2021_DTS_Zech', 3, '2021-10-19', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1639, 'NL_OFFSHORE_TM5', 29749, 'wcc_m9n7_qi_2021_DTS_Rotl_Zech', 5, '2021-10-19', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(2060, 'NL_ONSHORE_RD', 31763, 'wcc_', 2, '2021-10-08', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1367, 'EU_MEGA_MERGE_TM5', 19, 'wcc_Test_CPA1.1', 5, '2021-10-07', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1369, 'EU_MEGA_MERGE_TM5', 17, 'wcc_GR_Den_Neu_Son', 2, '2021-10-07', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1372, 'EU_MEGA_MERGE_TM5', 18, 'wcc_Test_CPA1', 5, '2021-10-07', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1364, 'EU_MEGA_MERGE_TM5', 16, 'wcc_Tjeerd_Test7', 30, '2021-09-28', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1959, 'NL_ONSHORE_RD', 31762, 'wcc_Tjeerd_test2', 5, '2021-09-28', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(2000, 'NL_ONSHORE_RD', 31761, 'wcc_Tjeerd_test1', 5, '2021-09-28', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1366, 'EU_MEGA_MERGE_TM5', 15, 'wcc_Tjeerd_Test6', 1, '2021-09-28', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1375, 'EU_MEGA_MERGE_TM5', 14, 'wcc_Tjeerd_Test5', 20, '2021-09-28', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1374, 'EU_MEGA_MERGE_TM5', 12, 'wcc_Tjeerd_Test', 14, '2021-09-27', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1368, 'EU_MEGA_MERGE_TM5', 13, 'wcc_Tjeerd_Test2', 14, '2021-09-27', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1381, 'EU_MEGA_MERGE_UTM31N', 1419, 'wcc_henry10sep21', 15, '2021-09-10', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1404, 'EU_MEGA_MERGE_UTM31N', 1418, 'wcc_henry9sep21b', 84, '2021-09-09', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(1376, 'EU_MEGA_MERGE_UTM31N', 1417, 'wcc_henry9sep21', 50, '2021-09-09', 'S_DATM00', 0, '2021-11-17', '2021-11-25'),
+(473, 'EU_MEGA_MERGE_UTM31N', 1415, 'wcc_testDBN', 1, '2021-09-03', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(479, 'EU_MEGA_MERGE_UTM31N', 1416, 'wcc_testDBN3', 2, '2021-09-03', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(356, 'NL_ONSHORE_RD', 31760, 'wcc_wim123490', 489, '2021-09-01', 'S_DATM00', 0, '2021-09-03', '2021-11-25'),
+(316, 'NL_ONSHORE_RD', 31759, 'wcc_EKl3', 2, '2021-09-01', 'S_DATM00', 1, '2021-09-03', '2021-11-25'),
+(610, 'NL_OFFSHORE_TM5', 29747, 'wcc_', 1, '2021-09-01', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(449, 'EU_MEGA_MERGE_RD', 3, 'wcc_', 36, '2021-09-01', 'S_DATM00', 1, '2021-09-06', '2021-11-25'),
+(453, 'EU_MEGA_MERGE_TM5', 11, 'wcc_Tjeerd_1_Test', 2, '2021-09-01', 'S_DATM00', 1, '2021-09-06', '2021-11-25'),
+(478, 'EU_MEGA_MERGE_UTM31N', 1414, 'wcc_test', 10, '2021-09-01', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(151, 'NL_ONSHORE_RD', 31758, 'EKl2', 2, '2021-09-01', 'S_DATM00', 1, '2021-09-03', '2021-11-25'),
+(97, 'NL_ONSHORE_RD', 31757, 'wcc_EKL1', 2, '2021-09-01', 'S_DATM00', 1, '2021-09-03', '2021-11-25'),
+(481, 'NAM_WGS84_4326', 3, 'wcc_test1321er3r', 87, '2021-08-31', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(203, 'NL_ONSHORE_RD', 31756, 'wcc_SCH_HS_welllist_test', 135, '2021-08-30', 'S_DATM00', 0, '2021-09-03', '2021-11-25'),
+(465, 'EU_MEGA_MERGE_UTM31N', 1413, 'wcc_Henry_postmod26aug', 41, '2021-08-26', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(468, 'EU_MEGA_MERGE_UTM31N', 1411, 'wcc_henry_26aug', 257, '2021-08-26', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(454, 'EU_MEGA_MERGE_UTM31N', 1412, 'wcc_henry26augc', 43, '2021-08-26', 'S_DATM00', 1, '2021-09-06', '2021-11-25'),
+(417, 'ARCHIVES', 1, 'a1', 0, '2021-08-16', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(421, 'DE_OFFSHORE_TM5', 0, 'w3', 0, '2021-08-12', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(418, 'ARCHIVES', 0, 'w3', 0, '2021-08-12', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(458, 'EU_MEGA_MERGE_UTM31N', 1410, 'henry2', 0, '2021-07-27', 'S_DATM00', 1, '2021-09-06', '2021-11-25'),
+(463, 'EU_MEGA_MERGE_UTM31N', 1409, 'hope1', 0, '2021-07-27', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(472, 'EU_MEGA_MERGE_UTM31N', 1408, 'All_Wells_28may21', 25627, '2021-05-28', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(480, 'NAM_WGS84_4326', 2, 'CDS_SYNC_WELLS', 2283, '2021-05-25', 'S_CDSYNC_I', 0, '2021-09-06', '2021-11-25'),
+(464, 'EU_MEGA_MERGE_UTM31N', 1407, 'UTM31N-AREA-FOR-PETREL', 5928, '2021-03-17', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(96, 'NL_ONSHORE_RD', 31693, 'WGS84-TEST', 14, '2021-03-17', 'PE_MANAGE', 0, '2021-09-03', '2021-11-25'),
+(587, 'NL_OFFSHORE_TM5', 29746, 'WGS84-TEST-TM5', 26, '2021-03-17', 'PE_MANAGE', 0, '2021-09-06', '2021-11-25'),
+(673, 'NL_OFFSHORE_TM5', 29745, 'K15L13-welllist', 241, '2021-02-18', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(543, 'NL_OFFSHORE_TM5', 29743, 'hgm_list_1feb21', 91, '2021-02-01', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(447, 'EU_MEGA_MERGE_RD', 2, 'hgm_list_1feb21', 91, '2021-02-01', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(441, 'DE_ONSH_DHDN_Z3', 3167, 'PETREL_LOGS', 0, '2021-01-28', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(430, 'DE_ONSH_DHDN_Z3', 3171, 'wells_picks_henkva_130', 130, '2021-01-28', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(439, 'DE_ONSH_DHDN_Z3', 3166, 'HD_APR13', 869, '2021-01-28', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(431, 'DE_ONSH_DHDN_Z3', 3173, 'wells_with_picks_henkva', 868, '2021-01-28', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(435, 'DE_ONSH_DHDN_Z3', 3170, 'petrel_p126w', 36, '2021-01-28', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(443, 'DE_ONSH_DHDN_Z3', 3169, 'Wells_with_logs_211212', 237, '2021-01-28', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(428, 'DE_ONSH_DHDN_Z3', 3172, 'wells_with_picks', 868, '2021-01-28', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(427, 'DE_ONSH_DHDN_Z3', 3165, 'ALL_WELLS_28092012', 0, '2021-01-28', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(438, 'DE_ONSH_DHDN_Z3', 3164, 'ALL_9NOV2012', 868, '2021-01-28', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(426, 'DE_ONSH_DHDN_Z3', 3168, 'Wells_April2013', 1, '2021-01-28', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(433, 'DE_ONSH_DHDN_Z3', 3163, 'ppelc_transfer', 11, '2021-01-27', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(425, 'DE_ONSH_DHDN_Z3', 3162, 'trasnfer_test', 64, '2021-01-26', 'PLPPE6', 0, '2021-09-06', '2021-11-25'),
+(429, 'DE_ONSH_DHDN_Z3', 3161, 'krhn_petrel_wells', 62, '2021-01-21', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(482, 'NAM_WGS84_4326', 1, 'nlhmib_well_list', 39, '2021-01-18', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(452, 'EU_MEGA_MERGE_TM5', 10, 'O_P_blocks_well_trans', 204, '2021-01-13', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(462, 'EU_MEGA_MERGE_UTM31N', 1404, '2020-12-17 Wells with any differences in UK_SNS_TM0', 6276, '2020-12-17', 'plppe6', 0, '2021-09-06', '2021-11-25'),
+(1177, 'UK_SNS_TM0', 24576, '2020-12-17 Wells not matching in EU_MEGA_MERGE_UTM31N', 244, '2020-12-17', 'plppe6', 0, '2021-09-06', '2021-11-25'),
+(415, 'NL_ONSHORE_RD', 31685, 'ppelc_transfer', 1, '2020-12-03', 'PLPPE6', 0, '2021-09-03', '2021-11-25'),
+(1281, 'UK_SNS_TM0', 24575, 'MZ-transfer', 2, '2020-10-13', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(1299, 'UK_SNS_TM0', 24574, 'ppelc_transfer', 2, '2020-10-07', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(460, 'EU_MEGA_MERGE_UTM31N', 1400, 'P15-13', 1, '2020-09-03', 'PE_MANAGE', 0, '2021-09-06', '2021-11-25'),
+(467, 'EU_MEGA_MERGE_UTM31N', 1398, 'Tees_Endev', 16, '2020-05-05', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(1257, 'UK_SNS_TM0', 24573, 'Tees_Endev', 16, '2020-05-04', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(477, 'EU_MEGA_MERGE_UTM31N', 1394, 'Selene_nlkwea', 14, '2019-11-22', 'NLKWEA', 0, '2021-09-06', '2021-11-25'),
+(1220, 'UK_SNS_TM0', 24570, 'Openwire_RT', 5, '2018-12-15', 'NGAADA', 0, '2021-09-06', '2021-11-25'),
+(469, 'EU_MEGA_MERGE_UTM31N', 1385, 'Rev_allwells_test', 24390, '2018-06-27', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(642, 'NL_OFFSHORE_TM5', 29721, 'JDA-Regional', 928, '2018-05-15', 'SNEPR0', 0, '2021-09-06', '2021-11-25'),
+(1219, 'UK_SNS_TM0', 24568, 'BTEST', 255, '2018-02-08', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(588, 'NL_OFFSHORE_TM5', 29719, 'ATEST', 0, '2018-02-08', 'SNEPR0', 0, '2021-09-06', '2021-11-25'),
+(674, 'NL_OFFSHORE_TM5', 29720, 'BTEST', 0, '2018-02-08', 'SNEPR0', 0, '2021-09-06', '2021-11-25'),
+(420, 'DE_GERMANY_DEV_ZONE3', 2, 'SPATIALIZER', 4, '2017-07-13', 'S_DATM00', 0, '2021-09-06', '2021-11-25'),
+(476, 'EU_MEGA_MERGE_UTM31N', 779, 'NSEA_GROWTH_5NATIONS_NLGLAK_Q7_23_AOI_ALL_WELLS', 225, '2017-06-02', 'INBBU1', 0, '2021-09-06', '2021-11-25'),
+(475, 'EU_MEGA_MERGE_UTM31N', 385, 'NNS_CROSSBORDER_EXPLORATION_WELLS', 4152, '2017-02-02', 'INBBU1', 0, '2021-09-06', '2021-11-25'),
+(471, 'EU_MEGA_MERGE_UTM31N', 360, 'NSEA_GROWTH_5Nations_all_wells', 4320, '2017-01-18', 'NOESI0', 0, '2021-09-06', '2021-11-25'),
+(461, 'EU_MEGA_MERGE_UTM31N', 361, 'NSEA_GROWTH_5Nations_ExplorationWells', 1718, '2017-01-18', 'NOESI0', 0, '2021-09-06', '2021-11-25'),
+(456, 'EU_MEGA_MERGE_UTM31N', 268, 'nlbki8_missedpay2', 8, '2016-11-10', 'NLBKI8', 0, '2021-09-06', '2021-11-25'),
+(455, 'EU_MEGA_MERGE_UTM31N', 267, 'nlbki8_MissedPay', 8, '2016-11-10', 'NLBKI8', 0, '2021-09-06', '2021-11-25'),
+(436, 'DE_ONSH_DHDN_Z3', 781, 'petrel_p145_BBU', 38, '2016-07-26', 'S_DATM00', 0, '2021-09-06', '2021-11-25');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

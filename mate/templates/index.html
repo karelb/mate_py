@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <link rel="icon" href="{{ url_for('mate.static', filename='images/seistt2.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('mate.static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('mate.static', filename='css/bootstrap-theme.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('mate.static', filename='css/mate.css') }}">
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header"><a class="navbar-brand" href="{{ url_for('mate.index') }}">{{ brand }}</a></div>
+      <form class="navbar-form navbar-right" id="mate-search-form" autocomplete="off" role="search">
+        <div class="input-group input-group-sm">
+          <input type="text" class="form-control" placeholder="Search..." id="{{ instance }}searchString" size="25" aria-label="Search">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" id="mate-clear-search" title="Clear"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="submit" class="btn btn-primary" title="Search"><i class="glyphicon glyphicon-search"></i></button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div id="mate-toasts" aria-live="polite"></div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><span id="mate-title"></span>
+          <img id="mate-loader" class="mate-loader" src="{{ url_for('mate.static', filename='images/ajax_loader.gif') }}" alt="Loading...">
+        </h3>
+      </div>
+      <div id="mate-table"></div>
+      <div class="panel-footer">
+        <div id="mate-records" class="text-muted" style="margin-bottom:8px"></div>
+        <div id="mate-controls" class="mate-toolbar"></div>
+      </div>
+    </div>
+    <div id="mate-adv"></div>
+  </div>
+  <div id="mate-modal-root"></div>
+
+  <script>
+    window.MATE_CONFIG = {
+      instance: {{ instance|tojson }},
+      defaultState: {{ default_state|tojson }},
+      urls: {
+        table: {{ url_for('mate.api_table')|tojson }},
+        view: {{ url_for('mate.api_view')|tojson }},
+        editForm: {{ url_for('mate.api_edit_form')|tojson }},
+        update: {{ url_for('mate.api_update')|tojson }},
+        addForm: {{ url_for('mate.api_add_form')|tojson }},
+        insert: {{ url_for('mate.api_insert')|tojson }},
+        del: {{ url_for('mate.api_delete')|tojson }},
+        copy: {{ url_for('mate.api_copy')|tojson }},
+        columns: {{ url_for('mate.api_columns')|tojson }},
+        columnsSave: {{ url_for('mate.api_columns_save')|tojson }},
+        distinct: {{ url_for('mate.api_distinct')|tojson }},
+        exportCsv: {{ url_for('mate.export_csv')|tojson }}
+      }
+    };
+  </script>
+  <script src="{{ url_for('mate.static', filename='js/mate.js') }}"></script>
+</body>
+</html>

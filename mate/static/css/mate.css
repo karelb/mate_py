@@ -1,0 +1,24 @@
+/* Minimal glue on top of stock Bootstrap 3: everything visual comes from Bootstrap components. */
+body { padding-top: 70px; padding-bottom: 30px; }
+.mate-loader { display: none; margin-left: 10px; }
+.mate-help { cursor: pointer; margin-left: 10px; font-size: 16px; }
+.mate-sort a { text-decoration: none; white-space: nowrap; }
+.mate-table th, .mate-table td { vertical-align: middle !important; }
+.mate-table td.mate-right { text-align: right; }
+.mate-table .mate-icons { white-space: nowrap; width: 1%; }
+.mate-icon { display: inline-block; margin-right: 8px; font-size: 15px; text-decoration: none; }
+.mate-icon:last-child { margin-right: 0; }
+.mate-icon:hover, .mate-icon:focus { text-decoration: none; opacity: .7; }
+.mate-table tr.mate-editing > td { background-color: #fcf8e3 !important; }
+.mate-table input.form-control, .mate-table select.form-control { min-width: 90px; }
+.mate-table tr.mate-filter > td { background: #f5f5f5; }
+.mate-trunc { cursor: help; border-bottom: 1px dotted #999; }
+.mate-pointer { cursor: pointer; }
+#mate-toasts { position: fixed; top: 60px; left: 50%; transform: translateX(-50%); z-index: 2000; min-width: 280px; }
+#mate-toasts .alert { margin-bottom: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+.mate-toolbar > * { margin-right: 6px; margin-bottom: 6px; }
+.mate-toolbar .form-inline { display: inline-block; }
+.modal.in { display: block; overflow-y: auto; }
+.mate-order-item { cursor: move; display: flex; justify-content: space-between; align-items: center; }
+.mate-order-item.dragging { opacity: .4; }
+.mate-filter-value { cursor: pointer; }
