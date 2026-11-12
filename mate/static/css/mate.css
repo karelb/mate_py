@@ -2,7 +2,10 @@
 body { padding-top: 70px; padding-bottom: 30px; }
 .mate-loader { display: none; margin-left: 10px; }
 .mate-help { cursor: pointer; margin-left: 10px; font-size: 16px; }
-.mate-sort a { text-decoration: none; white-space: nowrap; }
+.mate-table thead th.mate-sort { white-space: nowrap; background: linear-gradient(to bottom, #f5f5f5 0, #e8e8e8 100%); }
+.mate-table thead th { background: linear-gradient(to bottom, #f5f5f5 0, #e8e8e8 100%); }
+.mate-sort a { text-decoration: none; }
+.mate-sort .glyphicon { font-size: 11px; margin-left: 2px; }
 .mate-table th, .mate-table td { vertical-align: middle !important; }
 .mate-table td.mate-right { text-align: right; }
 .mate-table .mate-icons { white-space: nowrap; width: 1%; }
