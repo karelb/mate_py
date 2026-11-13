@@ -29,6 +29,35 @@ body { padding-top: 70px; padding-bottom: 30px; }
 /* modal header + view dialog */
 .modal-header { background-color: #f5f5f5; border-top-left-radius: 6px; border-top-right-radius: 6px; }
 .modal-footer { background-color: #fafafa; }
-table.mate-view { margin-bottom: 0; table-layout: fixed; }
-table.mate-view th.mate-view-label { width: 17%; background-color: #f0f0f0; font-weight: 600; text-align: right; white-space: nowrap; vertical-align: middle; }
-table.mate-view td.mate-view-value { width: 33%; background-color: #fff; word-break: break-word; vertical-align: middle; }
+table.mate-view { margin-bottom: 0; table-layout: fixed; font-size: 13px; border: 1px solid #ddd; }
+table.mate-view > tbody > tr > th,
+table.mate-view > tbody > tr > td { padding: 6px 8px; border: 1px solid #ddd; background-color: #f9f9f9; color: #555;
+  vertical-align: middle; word-break: break-word; }
+table.mate-view th.mate-view-label { width: 23%; text-align: left; font-weight: normal; white-space: normal; }
+table.mate-view td.mate-view-value { width: 27%; }
+table.mate-view > tbody > tr:hover > th,
+table.mate-view > tbody > tr:hover > td { background-color: #f0f0f0; }
+table.mate-view select { height: 24px; padding: 0 4px; font-size: 12px; }
+
+/* glyphicons: black (#333), blue on hover */
+.mate-icon, .mate-icon.text-danger, .mate-icon.text-success,
+.mate-help, .mate-help.text-primary,
+.mate-sort .glyphicon, .mate-sort .glyphicon.text-muted,
+.mate-sort a .glyphicon { color: #333333 !important; }
+.mate-icon:hover, .mate-icon:focus,
+.mate-help:hover,
+.mate-sort:hover .glyphicon, .mate-sort a:hover .glyphicon { color: #337ab7 !important; opacity: 1; }
+.mate-icon .glyphicon, .mate-help .glyphicon { color: inherit !important; }
+
+/* view popup: striped rows with visible borders */
+table.mate-view { border: 1px solid #ccc; }
+table.mate-view > tbody > tr > th,
+table.mate-view > tbody > tr > td { border: 1px solid #ccc; background-color: #ffffff; }
+table.mate-view > tbody > tr:nth-child(odd) > th,
+table.mate-view > tbody > tr:nth-child(odd) > td { background-color: #f2f2f2; }
+table.mate-view > tbody > tr:hover > th,
+table.mate-view > tbody > tr:hover > td { background-color: #e6edf5; }
+
+/* brand logo in front of the brand name */
+.navbar-brand.mate-brand { display: flex; align-items: center; gap: 8px; padding-top: 0; padding-bottom: 0; height: 50px; }
+.mate-logo { height: 30px; width: auto; display: block; }

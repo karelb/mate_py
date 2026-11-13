@@ -12,7 +12,8 @@
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
-      <div class="navbar-header"><a class="navbar-brand" href="{{ url_for('mate.index') }}">{{ brand }}</a></div>
+      <div class="navbar-header"><a class="navbar-brand mate-brand" href="{{ url_for('mate.index') }}">
+          <img src="{{ url_for('mate.static', filename='images/logo.png') }}" alt="" class="mate-logo"><span>{{ brand }}</span></a></div>
       <form class="navbar-form navbar-right" id="mate-search-form" autocomplete="off" role="search">
         <div class="input-group input-group-sm">
           <input type="text" class="form-control" placeholder="Search..." id="{{ instance }}searchString" size="25" aria-label="Search">

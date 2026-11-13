@@ -142,13 +142,17 @@
   }
 
   function colHeader(c) {
-    const th = h('th', { class: 'mate-sort', title: c.title || null, style: c.min_width ? 'min-width:' + c.min_width + 'px' : null });
-    if (c.distinct) {
-      th.append(h('a', { href: '#', title: 'Distinct values', onclick: (e) => { e.preventDefault(); showDistinct(c); } }, icon('list')), ' ');
-    }
     const nextDir = c.sorted === 'asc' ? 'desc' : 'asc';
-    th.append(h('a', { href: '#', onclick: (e) => { e.preventDefault(); load({ orderByColumn: c.key, ascOrDesc: nextDir }); } }, c.text));
-    th.append(' ', icon(c.sorted === 'asc' ? 'chevron-up' : (c.sorted === 'desc' ? 'chevron-down' : 'sort')),);
+    const sort = () => load({ orderByColumn: c.key, ascOrDesc: nextDir, start: 0 });
+    const th = h('th', { class: 'mate-sort' + (c.sorted ? ' sorted' : ''), tabindex: '0', role: 'button',
+      title: c.title || null, style: c.min_width ? 'min-width:' + c.min_width + 'px' : null,
+      'aria-sort': c.sorted === 'asc' ? 'ascending' : (c.sorted === 'desc' ? 'descending' : 'none'),
+      onclick: sort, onkeydown: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sort(); } } });
+    if (c.distinct) {
+      th.append(h('a', { href: '#', title: 'Distinct values', onclick: (e) => { e.preventDefault(); e.stopPropagation(); showDistinct(c); } }, icon('list')), ' ');
+    }
+    th.append(h('a', { href: '#', tabindex: '-1', onclick: (e) => e.preventDefault() }, c.text), ' ',
+      icon(c.sorted === 'asc' ? 'triangle-top' : (c.sorted === 'desc' ? 'triangle-bottom' : 'sort')));
     if (!c.sorted) th.lastChild.classList.add('text-muted');
     return th;
   }
@@ -339,7 +343,7 @@
   async function viewRow(id) {
     try {
       const d = await api(CFG.urls.view, { id });
-      const table = h('table', { class: 'mate-view table table-bordered table-condensed' });
+      const table = h('table', { class: 'mate-view table table-striped table-bordered table-condensed' });
       const valueCell = (f) => {
         const cell = h('td', { class: 'mate-view-value' });
         const v = f ? f.value : '';
