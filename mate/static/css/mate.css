@@ -25,3 +25,10 @@ body { padding-top: 70px; padding-bottom: 30px; }
 .mate-order-item { cursor: move; display: flex; justify-content: space-between; align-items: center; }
 .mate-order-item.dragging { opacity: .4; }
 .mate-filter-value { cursor: pointer; }
+
+/* modal header + view dialog */
+.modal-header { background-color: #f5f5f5; border-top-left-radius: 6px; border-top-right-radius: 6px; }
+.modal-footer { background-color: #fafafa; }
+table.mate-view { margin-bottom: 0; table-layout: fixed; }
+table.mate-view th.mate-view-label { width: 17%; background-color: #f0f0f0; font-weight: 600; text-align: right; white-space: nowrap; vertical-align: middle; }
+table.mate-view td.mate-view-value { width: 33%; background-color: #fff; word-break: break-word; vertical-align: middle; }

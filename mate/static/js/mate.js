@@ -339,16 +339,23 @@
   async function viewRow(id) {
     try {
       const d = await api(CFG.urls.view, { id });
-      const table = h('table', { class: 'table table-striped table-bordered table-condensed' });
-      d.fields.forEach((f) => {
-        const cell = h('td');
-        const v = f.value;
-        if (f.options) cell.append(h('select', { class: 'form-control input-sm' }, f.options.map((o) => h('option', { text: o }))));
+      const table = h('table', { class: 'mate-view table table-bordered table-condensed' });
+      const valueCell = (f) => {
+        const cell = h('td', { class: 'mate-view-value' });
+        const v = f ? f.value : '';
+        if (f && f.options) cell.append(h('select', { class: 'form-control input-sm' }, f.options.map((o) => h('option', { text: o }))));
         else if (v.length > 40) cell.append(h('span', { class: 'mate-trunc', title: v, text: v.slice(0, 40) + '...' }));
         else cell.append(v);
-        table.append(h('tr', {}, h('th', { class: 'text-right', style: 'width:40%', text: f.label }), cell));
-      });
-      openModal(d.title, table, [btn(L.btnCancel, closeModal)], { width: 560 });
+        return cell;
+      };
+      for (let i = 0; i < d.fields.length; i += 2) {
+        const a = d.fields[i], b = d.fields[i + 1];
+        table.append(h('tr', {},
+          h('th', { class: 'mate-view-label', text: a.label }), valueCell(a),
+          b ? h('th', { class: 'mate-view-label', text: b.label }) : h('th', { class: 'mate-view-label' }),
+          b ? valueCell(b) : h('td')));
+      }
+      openModal(d.title, table, [btn(L.btnCancel, closeModal)], { width: 900 });
     } catch (e) { toast(e.message); }
   }
 
