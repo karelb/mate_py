@@ -119,7 +119,7 @@ _CONFIG_DEFAULTS: dict[str, Any] = {
     # titles
     "table_title": None, "add_row_title": None, "edit_row_title": None,
     "edit_mult_title": None, "view_row_title": None, "show_hide_title": None,
-    "order_col_title": None, "help_html": "",
+    "order_col_title": None, "help_html": "", "nav_title": None,
     # paging
     "default_display_num": 20, "display_num_inc": 5, "max_disp_num": 200,
     "pagination_links": False, "page_percent": 20, "page_range": 10,
@@ -993,6 +993,10 @@ class AjaxTableEditor:
         exprs: list[str] = []
         params: dict[str, Any] = {}
         after: dict[str, Any] = {}
+        for col, cinfo in cols.items():      # a required column must not be left out of the request
+            if (col not in info and self.col_can(cinfo, "A") and cinfo.get("req")
+                    and "default" not in cinfo and not callable(cinfo.get("on_add_fun"))):
+                errors[col] = cinfo["display_text"]
         for col, val in info.items():
             if col not in cols:
                 continue

@@ -121,6 +121,23 @@ def show_values_2_select(col, val, row=None, *_):
     return Cell(s, options=parts)
 
 
+def field(helper: Callable[..., dict[str, Any]], name: str, perms: str = "",
+          text: str | None = None, **extra: Any) -> dict[str, Any]:
+    """Build a column definition from a helper, with a label and extra keys.
+
+    ``field(txt_field, "ow_project", "TAEC", "OW Project", req=True)`` is the
+    form the generator script (``tools/generate_columns.py``) emits.  Every
+    permission letter in *perms* is guaranteed to be present afterwards, also
+    for helpers such as :func:`id_field` that ignore their ``p`` argument.
+    """
+    d = helper(name, perms)
+    d["perms"] = d.get("perms", "") + "".join(c for c in perms if c not in d.get("perms", ""))
+    if text is not None:
+        d["display_text"] = text
+    d.update(extra)
+    return d
+
+
 # --------------------------------------------------------------------------
 # Simple fields
 # --------------------------------------------------------------------------

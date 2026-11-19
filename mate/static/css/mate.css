@@ -1,5 +1,5 @@
 /* Minimal glue on top of stock Bootstrap 3: everything visual comes from Bootstrap components. */
-body { padding-top: 70px; padding-bottom: 30px; }
+body { padding-top: 102px; padding-bottom: 30px; }
 .mate-loader { display: none; margin-left: 10px; }
 .mate-help { cursor: pointer; margin-left: 10px; font-size: 16px; }
 .mate-table thead th.mate-sort { white-space: nowrap; background: linear-gradient(to bottom, #f5f5f5 0, #e8e8e8 100%); }
@@ -17,7 +17,7 @@ body { padding-top: 70px; padding-bottom: 30px; }
 .mate-table tr.mate-filter > td { background: #f5f5f5; }
 .mate-trunc { cursor: help; border-bottom: 1px dotted #999; }
 .mate-pointer { cursor: pointer; }
-#mate-toasts { position: fixed; top: 60px; left: 50%; transform: translateX(-50%); z-index: 2000; min-width: 280px; }
+#mate-toasts { position: fixed; top: 112px; left: 50%; transform: translateX(-50%); z-index: 2000; min-width: 280px; }
 #mate-toasts .alert { margin-bottom: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
 .mate-toolbar > * { margin-right: 6px; margin-bottom: 6px; }
 .mate-toolbar .form-inline { display: inline-block; }
@@ -61,3 +61,25 @@ table.mate-view > tbody > tr:hover > td { background-color: #e6edf5; }
 /* brand logo in front of the brand name */
 .navbar-brand.mate-brand { display: flex; align-items: center; gap: 8px; padding-top: 0; padding-bottom: 0; height: 50px; }
 .mate-logo { height: 30px; width: auto; display: block; }
+
+/* two fixed rows: brand bar (50px) + menu row with dropdowns */
+.mate-brandbar { margin-bottom: 0; }
+.mate-menubar { top: 50px; min-height: 40px; margin-bottom: 0; border-radius: 0; border-width: 0 0 1px 0; z-index: 1029; }
+.mate-menubar .navbar-nav > li > a { padding-top: 10px; padding-bottom: 10px; }
+.mate-menubar .navbar-toggle { margin-top: 3px; margin-bottom: 3px; padding: 7px 9px; }
+.mate-menubar .navbar-header { min-height: 40px; }
+.mate-menubar .dropdown-menu { border-radius: 0 0 4px 4px; margin-top: 0; }
+.mate-menubar .dropdown-menu > .active > a, .mate-menubar .dropdown-menu > .active > a:hover { background-color: #337ab7; }
+@media (max-width: 767px) { .mate-menubar .navbar-collapse { max-height: calc(100vh - 100px); overflow-y: auto; }
+  .mate-search input { width: 130px; } }
+/* start page */
+.mate-home .jumbotron { margin-top: 10px; padding: 30px 35px; }
+.mate-home .jumbotron h1 { font-size: 38px; margin-top: 0; }
+.mate-home .jumbotron .lead { margin-bottom: 0; }
+
+/* one line per record; columns are as wide as their data (scrolls sideways when wider than the panel) */
+.mate-table { width: auto; min-width: 0; table-layout: auto; }
+.mate-table > thead > tr > th,
+.mate-table > tbody > tr > td { white-space: nowrap; }
+.mate-table td select.form-control, .mate-table td input.form-control { width: auto; }
+.mate-table tr.mate-filter input.form-control { width: 100%; min-width: 80px; }

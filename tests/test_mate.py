@@ -1,5 +1,5 @@
 import pytest
-from examples.well_list import build_editor
+import web
 from mate.db import Database
 from mate.editor import PermissionDenied, ValidationError
 from mate.seed import seed_demo
@@ -12,7 +12,7 @@ H = {"X-Mate-Request": "1"}
 def ed():
     db = Database("sqlite:///:memory:")
     seed_demo(db)
-    return build_editor(db)
+    return web.build_editor("test_data", db)
 
 
 @pytest.fixture()
@@ -74,7 +74,7 @@ def test_sql_filters_limit_rights(ed):
 def test_crud_with_full_permissions():
     db = Database("sqlite:///:memory:")
     seed_demo(db)
-    ed = build_editor(db)
+    ed = web.build_editor("test_data", db)
     ed.permissions = "ACDEVQ"
     for c in ("ow_project", "work_set_id", "work_set_name", "create_date", "create_user_id", "first_date", "last_date"):
         ed.table_columns[c]["perms"] += "AC"
@@ -101,17 +101,19 @@ def test_languages(ed):
 
 
 def test_api(client):
-    assert client.post("/api/table", json={}).status_code == 400          # CSRF header required
-    r = client.post("/api/table", json={"state": {"searchString": "wcc_cafe"}}, headers=H)
+    assert client.post("/t/test_data/api/table", json={}).status_code == 400          # CSRF header required
+    r = client.post("/t/test_data/api/table", json={"state": {"searchString": "wcc_cafe"}}, headers=H)
     assert r.json["num_results"] == 1
-    assert client.post("/api/update", json={"id": 1389, "values": {"to_delete": "1"}}, headers=H).json["ok"]
-    assert client.post("/api/update", json={"id": 1389, "values": {"to_delete": "9"}}, headers=H).status_code == 422
-    assert client.post("/api/delete", json={"ids": [1389]}, headers=H).status_code == 403
-    assert client.post("/api/columns/save", json={"visible": {"nr_bh": False}}, headers=H).json["ok"]
-    cols = [c["key"] for c in client.post("/api/table", json={}, headers=H).json["columns"]]
+    assert client.post("/t/test_data/api/update", json={"id": 1389, "values": {"to_delete": "1"}}, headers=H).json["ok"]
+    assert client.post("/t/test_data/api/update", json={"id": 1389, "values": {"to_delete": "9"}}, headers=H).status_code == 422
+    assert client.post("/t/test_data/api/delete", json={"ids": [1389]}, headers=H).status_code == 403
+    assert client.post("/t/test_data/api/columns/save", json={"visible": {"nr_bh": False}}, headers=H).json["ok"]
+    cols = [c["key"] for c in client.post("/t/test_data/api/table", json={}, headers=H).json["columns"]]
     assert "nr_bh" not in cols                                              # persisted in session
     import base64, json
     sd = base64.b64encode(json.dumps({"searchString": "cafe"}).encode()).decode()
-    r = client.get("/export.csv", query_string={"session_data": sd})
+    r = client.get("/t/test_data/export.csv", query_string={"session_data": sd})
     assert r.data.startswith(b"\xef\xbb\xbf") and b"wcc_cafe" in r.data
     assert client.get("/").status_code == 200
+    assert client.get("/t/test_data/").status_code == 200
+    assert client.get("/t/nope/").status_code == 404

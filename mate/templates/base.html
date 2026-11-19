@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <link rel="icon" href="{{ url_for('mate.static', filename='images/seistt2.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('mate.static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('mate.static', filename='css/bootstrap-theme.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('mate.static', filename='css/mate.css') }}">
+</head>
+<body>
+  {# ---- row 1: brand bar ---- #}
+  <nav class="navbar navbar-inverse navbar-fixed-top mate-brandbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand mate-brand" href="{{ url_for('mate.index') }}">
+          <img src="{{ url_for('mate.static', filename='images/logo.png') }}" alt="" class="mate-logo"><span>{{ brand }}</span></a>
+      </div>
+      {% block brand_extra %}{% endblock %}
+    </div>
+  </nav>
+
+  {# ---- row 2: menu with dropdowns, one entry per page ---- #}
+  <nav class="navbar navbar-default navbar-fixed-top mate-menubar" aria-label="Pages">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" id="mate-nav-toggle" aria-controls="mate-nav" aria-expanded="false">
+          <span class="sr-only">Toggle menu</span>
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse" id="mate-nav">
+        <ul class="nav navbar-nav">
+          <li class="{{ 'active' if home_active }}"><a href="{{ url_for('mate.index') }}" title="Home"><i class="glyphicon glyphicon-home"></i></a></li>
+          {% for entry in menu %}
+          {% if entry.children is defined %}
+          <li class="dropdown{{ ' active' if entry.active }}">
+            <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">{{ entry.title }} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% for item in entry.children %}
+              <li class="{{ 'active' if item.active }}"><a href="{{ item.url }}">{{ item.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% else %}
+          <li class="{{ 'active' if entry.active }}"><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <script>
+    (function () {   // menu behaviour (Bootstrap's own JS is not loaded)
+      var nav = document.getElementById('mate-nav'), toggle = document.getElementById('mate-nav-toggle');
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('in');
+        toggle.setAttribute('aria-expanded', open); toggle.classList.toggle('collapsed', !open);
+      });
+      function closeAll(except) {
+        nav.querySelectorAll('li.dropdown.open').forEach(function (li) {
+          if (li !== except) { li.classList.remove('open'); li.firstElementChild.setAttribute('aria-expanded', 'false'); }
+        });
+      }
+      nav.querySelectorAll('.dropdown-toggle').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault(); e.stopPropagation();
+          var li = a.parentElement, open = !li.classList.contains('open');
+          closeAll(li); li.classList.toggle('open', open); a.setAttribute('aria-expanded', open);
+        });
+      });
+      document.addEventListener('click', function () { closeAll(null); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(null); });
+    })();
+  </script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

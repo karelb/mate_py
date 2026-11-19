@@ -343,7 +343,8 @@
   async function viewRow(id) {
     try {
       const d = await api(CFG.urls.view, { id });
-      const table = h('table', { class: 'mate-view table table-striped table-bordered table-condensed' });
+      const tbody = h('tbody');
+      const table = h('table', { class: 'mate-view table table-striped table-bordered table-condensed' }, tbody);
       const valueCell = (f) => {
         const cell = h('td', { class: 'mate-view-value' });
         const v = f ? f.value : '';
@@ -354,7 +355,7 @@
       };
       for (let i = 0; i < d.fields.length; i += 2) {
         const a = d.fields[i], b = d.fields[i + 1];
-        table.append(h('tr', {},
+        tbody.append(h('tr', {},
           h('th', { class: 'mate-view-label', text: a.label }), valueCell(a),
           b ? h('th', { class: 'mate-view-label', text: b.label }) : h('th', { class: 'mate-view-label' }),
           b ? valueCell(b) : h('td')));
